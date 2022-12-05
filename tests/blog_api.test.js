@@ -33,6 +33,13 @@ test('a specific blog title is within the returned blogs', async () => {
   expect(titles).toContain('React patterns');
 });
 
+test('blog post unique identifies is named "id"', async () => {
+  const allBlogs = await helper.blogsInDb();
+  const firstBlog = allBlogs[0];
+
+  expect(firstBlog.id).toBeDefined();
+});
+
 afterAll(() => {
   mongoose.connection.close();
 });
