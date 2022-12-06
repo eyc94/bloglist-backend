@@ -11,6 +11,12 @@ blogsRouter.post('/', async (request, response) => {
   const body = request.body;
   const user = request.user;
 
+  if (!user) {
+    return response.status(401).json({
+      error: 'Unauthorized attempt'
+    });
+  }
+
   if (!body.title) {
     return response.status(400).json({
       error: 'Missing title'
