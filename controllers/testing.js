@@ -1,4 +1,4 @@
-const testingRouter = express('express').Router();
+const testingRouter = require('express').Router();
 const Blog = require('../models/blog');
 const User = require('../models/user');
 
@@ -9,4 +9,4 @@ testingRouter.post('/reset', async (request, response) => {
   response.status(204).end();
 });
 
-export default testingRouter;
+module.exports = testingRouter;
