@@ -12,7 +12,7 @@ beforeEach(async () => {
   await Blog.insertMany(helper.initialBlogs);
   await User.deleteMany({});
   const passwordHash = await bcrypt.hash('secret', 10);
-  const user = new User({ username: 'admin', passwordHash });
+  const user = new User({ username: 'admin', name: 'owner', passwordHash });
   await User.insertMany(user);
 });
 
