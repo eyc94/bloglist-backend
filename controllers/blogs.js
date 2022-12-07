@@ -63,10 +63,8 @@ blogsRouter.delete('/:id', async (request, response) => {
 
 blogsRouter.put('/:id', async (request, response) => {
   const body = request.body;
-  const user = request.user;
 
   const blog = {
-    user: user,
     title: body.title,
     author: body.author,
     url: body.url,
@@ -76,7 +74,7 @@ blogsRouter.put('/:id', async (request, response) => {
   const updatedBlog = await Blog.findByIdAndUpdate(
     request.params.id,
     blog,
-    { new: true }
+    { new: true, runValidators: true, context: 'query' }
   );
   response.json(updatedBlog);
 });
